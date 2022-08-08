@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/hely1745/public_html/ndik.helloworld.my.id
+    - /bin/cp -R * $DEPLOYPATH
