@@ -3,7 +3,7 @@
 # 👋 Hi! Welcome, I'm Andy Wijaya from Indonesia.
 I like PHP and Node JS
 
-[**My Website**](https://www.ndik.helloworld.my.id)
+[**Here what i can do**](https://www.ndik.helloworld.my.id)
 
 ---
 ## 💌 Keep In Touch With Me
