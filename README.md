@@ -1,7 +1,7 @@
 <img src="https://ndik.helloworld.my.id//assets/images/icons8-tree-pastel-96.png" alt="drawing" width="200"/>
 
-# 👋 Hi! Welcome, I'm Andy Wijaya
-A fullstack developer, designer, and producer, from Indonesia.
+# 👋 Hi! Welcome, I'm Andy Wijaya from Indonesia.
+I like PHP and Node JS
 [**My Website**](https://www.ndik.helloworld.my.id)
 
 ---
