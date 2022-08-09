@@ -8,7 +8,7 @@
             <div class="row gx-5 gy-3">
                 <div class="col-12 col-lg-9">
 
-                    <div>Kumpulan Fitur Project yang pernah saya buat dibungkus dengan tema Portal dengan Bootstrap 5 tanpa JQuery tanpa menghilangkan lisensi dari Portal</div>
+                    <div>Kumpulan Fitur Project yang pernah saya buat dengan Bootstrap 5</div>
                 </div>
             </div>
         </div>
