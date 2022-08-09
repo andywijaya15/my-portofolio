@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="description" content="KIS - Keep It Simple">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
     <link rel="shortcut icon" href="/assets/images/icons8-tree-pastel-16.png">
 
@@ -30,14 +30,14 @@
                     <h2 class="auth-heading text-center mb-5">Log in to KIS</h2>
                     <div class="auth-form-container text-start">
                         <?php echo $this->session->flashdata('alert') ?>
-                        <form class="auth-form login-form" method="POST" action="/Auth/login">
+                        <form class="auth-form login-form" id="formlogin" method="POST" action="/Auth/login">
                             <div class="email mb-3">
-                                <label class="sr-only" for="namauser">Nama</label>
-                                <input name="namauser" type="text" class="form-control email" placeholder="Nama Lengkap" required="required">
+                                <!-- <label class="sr-only" for="namauser">Nama</label> -->
+                                <input name="namauser" id="namauser" type="text" class="form-control email" placeholder="Nama" required="required" autocomplete="off">
                             </div>
                             <div class="email mb-3">
-                                <label class="sr-only" for="email">Email</label>
-                                <input name="email" type="email" class="form-control email" placeholder="Email address" required="required">
+                                <!-- <label class="sr-only" for="email">Email</label> -->
+                                <input name="email" id="email" type="email" class="form-control email" placeholder="Alamat Email" required="required" autocomplete="off">
                             </div>
                             <!-- <div class="password mb-3">
                                 <label class="sr-only" for="password">Password</label>
@@ -52,12 +52,6 @@
 
                     </div>
                 </div>
-                <footer class="app-auth-footer">
-                    <div class="container text-center py-3">
-                        <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-
-                    </div>
-                </footer>
             </div>
         </div>
         <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
@@ -65,22 +59,10 @@
             </div>
             <div class="auth-background-mask"></div>
             <div class="auth-background-overlay p-3 p-lg-5">
-                <div class="d-flex flex-column align-content-end h-100">
-                    <div class="h-100"></div>
-                    <div class="overlay-content p-3 p-lg-4 rounded">
-                        <h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
-                        <div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template license <a href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">here</a>.</div>
-                    </div>
-                </div>
             </div>
-            <!--//auth-background-overlay-->
         </div>
-        <!--//auth-background-col-->
 
     </div>
-    <!--//row-->
-
-
 </body>
 
 </html>
