@@ -51,7 +51,7 @@
 <!--//app-card-body-->
 <!-- </div> -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="/assets/plugins/jquery/jquery-3.6.0.slim.min.js"></script>
 <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
