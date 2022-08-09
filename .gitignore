@@ -1,17 +1,18 @@
 .DS_Store
-/assets
-/application/config
+/app/assets
+/app/application/config
 /docker
+/database
 
-application/cache/*
-!application/cache/index.html
+app/application/cache/*
+!app/application/cache/index.html
 
-application/logs/*
-!application/logs/index.html
+app/application/logs/*
+!app/application/logs/index.html
 
-!application/*/.htaccess
+!app/application/*/.htaccess
 
-composer.lock
+/app/composer.lock
 tests/mocks/database/ci_test.sqlite
 
 user_guide_src/build/*
