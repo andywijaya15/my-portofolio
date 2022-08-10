@@ -55,7 +55,8 @@ class Auth extends CI_Controller
     public function notfound()
     {
         if ($this->session->userdata("nama_user")) {
-            $this->load->view('notfound');
+            $data["title"] = "Not Found";
+            $this->load->view('notfound', $data);
         } else {
             redirect(base_url());
         }
