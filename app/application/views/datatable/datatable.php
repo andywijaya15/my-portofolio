@@ -1,6 +1,5 @@
 <?php $this->view("_layouts/header") ?>
 <link rel="stylesheet" href="/assets/plugins/datatables/jquery.dataTables.min.css">
-<h1 class="app-page-title">Datatable</h1>
 
 <!-- <div class="app-card shadow-sm mb-5"> -->
 <!-- <div class="app-card-body"> -->

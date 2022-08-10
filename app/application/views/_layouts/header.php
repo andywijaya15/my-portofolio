@@ -32,3 +32,16 @@
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
+                <h1 class="app-page-title"><?= $title; ?></h1>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-lg-12">
+                        <div class="app-card app-card-stat shadow-sm h-100">
+                            <div class="app-card-body p-3 p-lg-4">
+                                <h4 class="stats-type mb-1">Koneksi ke Node JS</h4>
+                                <div class="stats-figure text-danger" id="stat">OFFLINE</div>
+                                <div class="stats-meta" id="stattext">Kamu tidak bisa menerima data realtime,silahkan ganti koneksi internetnya sampai status menjadi ONLINE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

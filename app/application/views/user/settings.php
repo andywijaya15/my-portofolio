@@ -1,5 +1,4 @@
 <?php $this->view("_layouts/header") ?>
-<h1 class="app-page-title">My Account</h1>
 
 <div class="row gy-4">
     <div class="col-12 col-lg-12">

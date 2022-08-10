@@ -1,5 +1,4 @@
 <?php $this->view("_layouts/header") ?>
-<h1 class="app-page-title">Realtime Apps</h1>
 
 <div class="card">
     <div class="card-header">
@@ -11,38 +10,38 @@
     </div>
     <div class="card-body" id="online" hidden="hidden">
         <!-- <h5 class="card-title">Realtime data dengan node js</h5> -->
-        <p class="card-text">Silahkan buka <a href="https://ndik.helloworld.my.id/Realtime" class="fw-bold">https://ndik.helloworld.my.id/Realtime</a> di hp dan login dengan nama dan email yang berbeda lalu klik tombol dibawah ini dan lihat apa yang terjadi : </p>
+        <p class="card-text">Silahkan buka <a href="https://ndik.helloworld.my.id/Realtime" class="fw-bold">https://ndik.helloworld.my.id/Realtime</a> di hp atau browser lain
+        <p class="fw-bold fw-italic">(HARUS BERBEDA DARI BROWSER SEKARANG misalkan saat ini login di chrome,maka harus buka website ini di Firefox)</p> dan login dengan nama dan email yang berbeda lalu klik tombol dibawah ini dan lihat apa yang terjadi : </p>
         <button class="btn btn-danger" id="btnsapa">Sapa Semua Orang yang online</button>
     </div>
 </div>
 
 
-<script src="/assets/plugins/socket.io/socket.io.min.js"></script>
 <script>
-    const cardOnline = document.querySelector("#online");
-    const cardOffline = document.querySelector("#offline");
-    const btnSapa = document.querySelector("#btnsapa");
+    document.addEventListener('DOMContentLoaded', () => {
 
-    const socket = io("https://socket-ndik.herokuapp.com");
+        const cardOnline = document.querySelector("#online");
+        const cardOffline = document.querySelector("#offline");
+        const btnSapa = document.querySelector("#btnsapa");
 
-    socket.on("connect", () => {
-        cardOnline.removeAttribute("hidden");
-        cardOffline.setAttribute("hidden", "hidden");
-    });
+        // const socket = io("https://socket-ndik.herokuapp.com");
 
-    socket.on("disconnect", () => {
-        cardOffline.removeAttribute("hidden");
-        cardOnline.setAttribute("hidden", "hidden");
-    });
-
-    btnSapa.addEventListener("click", () => {
-        socket.emit("sapa", {
-            username: '<?= $this->session->userdata("nama_user"); ?>'
+        socket.on("connect", () => {
+            cardOnline.removeAttribute("hidden");
+            cardOffline.setAttribute("hidden", "hidden");
         });
-    });
 
-    socket.on("dapetsapa", (res) => {
-        noty("success", `Halo user <?= $this->session->userdata("nama_user"); ?>,${res} menyapamu..`)
+        socket.on("disconnect", () => {
+            cardOffline.removeAttribute("hidden");
+            cardOnline.setAttribute("hidden", "hidden");
+        });
+
+        btnSapa.addEventListener("click", () => {
+            socket.emit("sapa", {
+                username: '<?= $this->session->userdata("nama_user"); ?>'
+            });
+        });
+
     });
 </script>
 

@@ -12,6 +12,7 @@ class Datatable extends CI_Controller
 
     public function index()
     {
-        $this->load->view('datatable/datatable');
+        $data['title'] = "Datatable";
+        $this->load->view('datatable/datatable', $data);
     }
 }

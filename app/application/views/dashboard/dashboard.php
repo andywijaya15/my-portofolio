@@ -1,5 +1,4 @@
 <?php $this->view("_layouts/header") ?>
-<h1 class="app-page-title">Dashboard</h1>
 
 <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
     <div class="inner">
