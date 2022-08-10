@@ -64,9 +64,10 @@ class Email extends CI_Controller
         $this->email->message($html);
         $sendmail = $this->email->send();
         if ($logmail && $sendmail) :
-            return true;
+            $res["status"] = "pass";
         else :
-            return false;
+            $res["status"] = "fail";
         endif;
+        echo json_encode($res);
     }
 }
