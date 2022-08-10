@@ -1,6 +1,6 @@
 <?php $this->view("_layouts/header") ?>
 
-<div class="card" id="content">
+<div class="card" id="content" hidden="hidden">
     <div class="card-header">
         Realtime data dengan node js
     </div>

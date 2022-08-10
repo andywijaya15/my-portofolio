@@ -2,7 +2,7 @@
 
 <div class="row mb-2">
     <div class="col">
-        <div class="card" id="content">
+        <div class="card" id="content" hidden="hidden">
             <div class="card-body" id="tablogin">
                 <form id="loginchat">
                     <div class="row">

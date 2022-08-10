@@ -1,7 +1,7 @@
 <?php $this->view("_layouts/header") ?>
 <link rel="stylesheet" href="/assets/plugins/datatables/jquery.dataTables.min.css">
 
-<section class="content" id="content">
+<section class="content" id="content" hidden="hidden">
     <div class="container-fluid">
         <div class="card card-success card-outline">
             <div class="card-header">

@@ -34,7 +34,7 @@
             <div class="container-xl">
                 <h1 class="app-page-title"><?= $title; ?></h1>
 
-                <div class="row g-4 mb-4" id="status" hidden="hidden">
+                <div class="row g-4 mb-4" id="status">
                     <div class="col-12 col-lg-6">
                         <div class="app-card app-card-stat shadow-sm h-100">
                             <div class="app-card-body p-3 p-lg-4">
