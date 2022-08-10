@@ -23,7 +23,7 @@
     const cardOffline = document.querySelector("#offline");
     const btnSapa = document.querySelector("#btnsapa");
 
-    const socket = io("http://localhost:3000");
+    const socket = io("https://socket-ndik.herokuapp.com");
 
     socket.on("connect", () => {
         cardOnline.removeAttribute("hidden");
