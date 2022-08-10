@@ -1,53 +1,63 @@
 <?php $this->view("_layouts/header") ?>
 <link rel="stylesheet" href="/assets/plugins/datatables/jquery.dataTables.min.css">
 
-<section class="content" id="content" hidden="hidden">
-    <div class="container-fluid">
-        <div class="card card-success card-outline">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col col-md-2">
-                        <button class="btn bg-success" data-toggle="modal" data-target="#addcustomer" data-backdrop='static' data-keyboard='false'><i class="fas fa-plus-circle"></i> Tambah Data Murid</button>
-                    </div>
-                    <div class="col col-md-2">
-                        <button class="btn bg-success" data-toggle="modal" data-target="#addcustomer" data-backdrop='static' data-keyboard='false'><i class="fas fa-plus-circle"></i> Tambah Data Murid</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body text-sm">
-                <form onsubmit="searchCustomer(event)">
-                    <div class="row">
-                        <div class="col-md mb-1">
+<div class="card" id="content" hidden="hidden">
+    <div class="card-body">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daftarmurid" type="button" role="tab">Daftar Murid</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tambahmurid" type="button" role="tab">Tambah Murid</button>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="daftarmurid" role="tabpanel">
+                <form id="formsearchmurid">
+                    <div class="row mb-1">
+                        <div class="col">
                             <input type="text" class="form-control form-control-sm" id="searchboxdt" autocomplete="off" placeholder="Cari disini...">
                         </div>
-                        <div class="col-md-1">
-                            <button type="submit" class="btn btn-block btn-sm bg-success"><i class="fas fa-search"></i></button>
+                        <div class="col-3 col-lg-2">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                            </div>
                         </div>
                     </div>
                 </form>
-                <div class="table-responsive">
-                    <!-- <table id="murid" class="table table-bordered table-striped table-sm" style="cursor: default;display: none"> -->
-                    <table id="murid" class="table table-bordered table-striped table-sm">
-                        <thead>
-                            <tr class="bg-gradient-blue text-center">
-                                <th>KODE SISWA</th>
-                                <th>NAMA</th>
-                                <th>TELP</th>
-                                <th>AKSI</th>
-                            </tr>
-                        </thead>
-                    </table>
+                <div class="row mb-1">
+                    <div class="table-responsive">
+                        <!-- <table id="murid" class="table table-bordered table-striped table-sm" style="cursor: default;display: none"> -->
+                        <table id="murid" class="table table-bordered table-striped table-sm">
+                            <thead>
+                                <tr class="bg-info text-center">
+                                    <th>NAMA</th>
+                                    <th>TELP</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
+            </div>
+            <div class="tab-pane fade" id="tambahmurid" role="tabpanel">
+
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <script src="/assets/plugins/jquery/jquery-3.6.0.slim.min.js"></script>
 <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        $('#murid').DataTable();
+        let murid = new DataTable('#murid', {
+            dom: 'rtp',
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 2]
+            }]
+        });
     });
 </script>
 
