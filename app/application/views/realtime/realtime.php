@@ -10,8 +10,9 @@
     </div>
     <div class="card-body" id="online" hidden="hidden">
         <!-- <h5 class="card-title">Realtime data dengan node js</h5> -->
-        <p class="card-text">Silahkan buka <a href="https://ndik.helloworld.my.id/Realtime" class="fw-bold">https://ndik.helloworld.my.id/Realtime</a> di hp atau browser lain
-        <p class="fw-bold fw-italic">(HARUS BERBEDA DARI BROWSER SEKARANG misalkan saat ini login di chrome,maka harus buka website ini di Firefox)</p> dan login dengan nama dan email yang berbeda lalu klik tombol dibawah ini dan lihat apa yang terjadi : </p>
+        <p class="card-text">Silahkan login di perangkat berbeda karena
+        <p class="fw-bold">Fitur ini bekerja saat ada lebih dari 1 orang yang online,bisa 1 HP dan 1 PC atau 1 PC 2 Browser berbeda(Chrome dan Firefox)</p>
+        dan login dengan nama dan email yang berbeda lalu klik tombol dibawah ini dan lihat apa yang terjadi : </p>
         <button class="btn btn-danger" id="btnsapa">Sapa Semua Orang yang online</button>
     </div>
 </div>
@@ -36,10 +37,26 @@
             cardOnline.setAttribute("hidden", "hidden");
         });
 
-        btnSapa.addEventListener("click", () => {
-            socket.emit("sapa", {
-                username: '<?= $this->session->userdata("nama_user"); ?>'
+        const click_log = async () => {
+            const data = new FormData();
+            data.append("user", '<?= $this->session->userdata("nama_user"); ?>');
+            const response = await fetch("/log_click", {
+                method: "POST",
+                body: data
             });
+            const result = await response.json();
+            return result.status;
+        }
+
+        btnSapa.addEventListener("click", async () => {
+            const result = await click_log();
+            if (result == "success") {
+                socket.emit("sapa", {
+                    username: '<?= $this->session->userdata("nama_user"); ?>'
+                });
+            } else {
+                noty("error", `Database error`);
+            }
         });
 
         socket.on("nooneonline", () => {

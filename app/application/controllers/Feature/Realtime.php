@@ -15,4 +15,17 @@ class Realtime extends CI_Controller
         $data['title'] = "Realtime Apps";
         $this->load->view('realtime/realtime', $data);
     }
+
+    public function logclick()
+    {
+        $data = [
+            "nama_user" => $this->input->post("user")
+        ];
+        if ($this->db->insert("click_log", $data)) {
+            $res["status"] = "success";
+        } else {
+            $res["status"] = "error";
+        }
+        echo json_encode($res);
+    }
 }
