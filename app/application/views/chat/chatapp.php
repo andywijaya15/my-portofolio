@@ -1,14 +1,14 @@
 <?php $this->view("_layouts/header") ?>
 
-<div id="content">
+<div id="content" hidden="hidden">
     <div class="row">
         <div class="col">
             <div class="card" id="chatroom">
-                <h4 class="card-header">
-                    Chat Room
-                </h4>
+                <h5 class="card-header">
+                    Welcome to Chat Room <?= $this->session->userdata("nama_user"); ?>
+                </h5>
                 <div class="card-body">
-                    <ul class="list-group" id="msgroom" style="height: 145px;overflow-y: auto;">
+                    <ul class="list-group" id="msgroom" style="height: 200px;overflow-y: auto;">
 
                     </ul>
                 </div>
@@ -51,17 +51,18 @@
             fieldMsg.innerHTML = fieldMsg.innerHTML + el;
         }
 
-        const userDisconnected = () => {
-            const el = `<span class="badge bg-danger">${name} left chatroom</span>`
-        }
-
         socket.emit("openchatroom", {
             username: `<?= $this->session->userdata("nama_user"); ?>`
         });
 
         socket.on("noone", () => {
             const el = `<div class="text-center"><span class="badge bg-danger">No user online</span></div>`
-            fieldMsg.innerHTML = fieldMsg.innerHTML + el;
+            const el2 = `<li class="alert alert-danger m-1">
+                           <div class="row">
+                               <div class="col text-center">Silahkan login di 2 perangkat berbeda untuk menggunakan chat room</div>
+                           </div>
+                        </li>`;
+            fieldMsg.innerHTML = fieldMsg.innerHTML + el + el2;
         });
 
         socket.on("joinedroom", (res) => {
@@ -70,17 +71,20 @@
 
         const addChat = (type, text, from) => {
             let color;
+            let textalign;
             if (type == "send") {
-                color = `list-group-item-secondary`;
+                color = `alert-primary`;
+                textalign = `text-end`;
             } else if (type == "rec") {
-                color = ``;
+                color = `alert-info`;
+                textalign = `text-start`;
             }
-            const el = `<li class="list-group-item ${color}">
+            const el = `<li class="alert ${color} m-1">
                            <div class="row">
-                               <div class="col">${from}</div>
+                               <div class="col ${textalign}">${from}</div>
                            </div>
                            <div class="row">
-                               <div class="col">${text}</div>
+                               <div class="col ${textalign}">${text}</div>
                            </div>
                         </li>`;
             fieldMsg.innerHTML = fieldMsg.innerHTML + el;
@@ -90,7 +94,10 @@
         formMsg.addEventListener("submit", (e) => {
             e.preventDefault();
             if (inputMsg.value != "") {
-                socket.emit("sendmsg", inputMsg.value);
+                socket.emit("sendmsg", {
+                    username: `<?= $this->session->userdata("nama_user"); ?>`,
+                    msg: inputMsg.value
+                });
                 addChat("send", inputMsg.value, `<?= $this->session->userdata("nama_user"); ?>`);
                 formMsg.reset();
                 inputMsg.focus();
@@ -103,28 +110,6 @@
         socket.on("recmsg", (data) => {
             addChat("rec", data.msg, data.username);
         });
-
-
-        // formLoginchat.addEventListener("submit", (e) => {
-        //     e.preventDefault();
-        //     if (inputUsernamechat.value != "") {
-        //         // socket.emit("add user", inputUsernamechat.value);
-        //         tabLogin.setAttribute("hidden", "hidden");
-        //         tabLogout.removeAttribute("hidden");
-        //         tabChatroom.removeAttribute("hidden");
-        //         textLoginas.textContent = `Welcome ${inputUsernamechat.value}`;
-        //         inputMsg.focus();
-        //     } else {
-        //         noty("error", "Input username masih kosong");
-        //     }
-        // });
-
-        // btnKeluar.addEventListener("click", () => {
-        //     textLoginas.textContent = "";
-        //     tabLogout.setAttribute("hidden", "hidden");
-        //     tabChatroom.setAttribute("hidden", "hidden");
-        //     tabLogin.removeAttribute("hidden");
-        // });
 
     });
 </script>
