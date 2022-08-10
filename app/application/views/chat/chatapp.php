@@ -40,7 +40,7 @@
                 Chat Room
             </h1>
             <div class="card-body">
-                <ul class="list-group" id="msgroom">
+                <ul class="list-group" id="msgroom" style="height:50%">
 
                 </ul>
             </div>
@@ -48,7 +48,7 @@
                 <form id="formmsg">
                     <div class="row">
                         <div class="col-9 col-lg-9">
-                            <input type="text" class="form-control" id="inputmsg">
+                            <input type="text" class="form-control" id="inputmsg" autocomplete="off">
                         </div>
                         <div class="col-3 col-lg-3">
                             <div class="d-grid gap-2">
@@ -79,9 +79,9 @@
 
         const addChat = (type, text, from) => {
             let color;
-            if (type = "send") {
+            if (type == "send") {
                 color = `list-group-item-secondary`;
-            } else if (type = "rec") {
+            } else if (type == "rec") {
                 color = ``;
             }
             const el = `<li class="list-group-item ${color}">
@@ -97,12 +97,18 @@
 
         formMsg.addEventListener("submit", (e) => {
             e.preventDefault();
-            socket.emit("sendmsg", {
-                username: inputUsernamechat.value,
-                text: inputMsg.value
-            });
-            addChat("send", inputMsg.value, inputUsernamechat.value);
-            formMsg.reset();
+            if (inputMsg.value != "") {
+                socket.emit("sendmsg", {
+                    username: inputUsernamechat.value,
+                    text: inputMsg.value
+                });
+                addChat("send", inputMsg.value, inputUsernamechat.value);
+                formMsg.reset();
+                inputMsg.focus();
+            } else {
+                noty("error", "Pesan masih kosong");
+                inputMsg.focus();
+            }
         });
 
         socket.on("recmsg", (data) => {
