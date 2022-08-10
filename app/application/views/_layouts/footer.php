@@ -1,10 +1,7 @@
 </div>
-<!--//container-fluid-->
 </div>
-<!--//app-content-->
 
 </div>
-<!--//app-wrapper-->
 
 
 <!-- Javascript -->
