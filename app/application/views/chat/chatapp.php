@@ -40,7 +40,7 @@
                 Chat Room
             </h1>
             <div class="card-body">
-                <ul class="list-group" id="msgroom" style="height:50%">
+                <ul class="list-group" id="msgroom" style="height: 200px;overflow-y: auto;">
 
                 </ul>
             </div>
@@ -93,6 +93,7 @@
                            </div>
                         </li>`;
             fieldMsg.innerHTML = fieldMsg.innerHTML + el;
+            fieldMsg.scrollTop = fieldMsg.scrollHeight;
         }
 
         formMsg.addEventListener("submit", (e) => {
