@@ -1,62 +1,64 @@
 <?php $this->view("_layouts/header") ?>
 
-<div class="row mb-2">
-    <div class="col">
-        <div class="card" id="content" hidden="hidden">
-            <div class="card-body" id="tablogin">
-                <form id="loginchat">
-                    <div class="row">
-                        <div class="col col-lg">
-                            <input type="text" class="form-control" placeholder="Masukkan Username" id="usernamechat" autocomplete="off">
-                        </div>
-                        <div class="col-3 col-lg-2">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success" id="btnmasuk">Masuk</button>
+<div id="content">
+    <div class="row mb-2">
+        <div class="col">
+            <div class="card" hidden="hidden">
+                <div class="card-body" id="tablogin">
+                    <form id="loginchat">
+                        <div class="row">
+                            <div class="col col-lg">
+                                <input type="text" class="form-control" placeholder="Masukkan Username" id="usernamechat" autocomplete="off">
+                            </div>
+                            <div class="col-3 col-lg-2">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-success" id="btnmasuk">Masuk</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-body" id="tablogout" hidden="hidden">
-                <div class="row">
-                    <div class="col col-lg">
-                        <h5 id="textloginas"></h5>
-                    </div>
-                    <div class="col-3 col-lg">
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-danger" id="btnkeluar">Keluar</button>
+                    </form>
+                </div>
+                <div class="card-body" id="tablogout" hidden="hidden">
+                    <div class="row">
+                        <div class="col col-lg">
+                            <h5 id="textloginas"></h5>
+                        </div>
+                        <div class="col-3 col-lg">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-danger" id="btnkeluar">Keluar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col">
-        <div class="card" id="chatroom" hidden="hidden">
-            <h1 class="card-header">
-                Chat Room
-            </h1>
-            <div class="card-body">
-                <ul class="list-group" id="msgroom" style="height: 170px;overflow-y: auto;">
+    <div class="row">
+        <div class="col">
+            <div class="card" id="chatroom" hidden="hidden">
+                <h1 class="card-header">
+                    Chat Room
+                </h1>
+                <div class="card-body">
+                    <ul class="list-group" id="msgroom" style="height: 170px;overflow-y: auto;">
 
-                </ul>
-            </div>
-            <div class="card-footer">
-                <form id="formmsg">
-                    <div class="row">
-                        <div class="col-9 col-lg-9">
-                            <input type="text" class="form-control" id="inputmsg" autocomplete="off">
-                        </div>
-                        <div class="col-3 col-lg-3">
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-success" id="btnkirim">Kirim</button>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <form id="formmsg">
+                        <div class="row">
+                            <div class="col-9 col-lg-9">
+                                <input type="text" class="form-control" id="inputmsg" autocomplete="off">
+                            </div>
+                            <div class="col-3 col-lg-3">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-success" id="btnkirim">Kirim</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
