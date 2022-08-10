@@ -41,6 +41,8 @@ class Email extends CI_Controller
                 <p>Ini adalah pesan yang anda kirim dari Website : </p>
                 <br>
                 <p>$text</p>
+                <br>
+                <br>
                 <p>Best Regards</p>
                 <br>
                 <br>
