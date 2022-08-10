@@ -42,6 +42,10 @@
             });
         });
 
+        socket.on("nooneonline", () => {
+            noty("error", `Maaf tidak ada yang online di ndik.helloworld.my.id`);
+        })
+
     });
 </script>
 
