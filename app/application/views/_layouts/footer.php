@@ -16,9 +16,9 @@
 
 <script>
     // prod
-    const socket = io("https://socket-ndik.herokuapp.com");
+    // const socket = io("https://socket-ndik.herokuapp.com");
     // dev
-    // socket = io("http://localhost:3000");
+    socket = io("http://10.10.1.100:3000");
 
     socket.on("dapetsapa", (res) => {
         noty("success", `Halo user <?= $this->session->userdata("nama_user"); ?>,${res} menyapamu..`)

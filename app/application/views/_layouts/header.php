@@ -19,9 +19,6 @@
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="/assets/css/portal.css">
 
-    <!-- Notie -->
-    <link rel="stylesheet" href="/assets/plugins/notie/notie.min.css">
-
 </head>
 
 <body class="app">
@@ -32,7 +29,6 @@
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
-                <h1 class="app-page-title"><?= $title; ?></h1>
 
                 <div class="row g-4 mb-4" id="status">
                     <div class="col-12 col-lg-6">
