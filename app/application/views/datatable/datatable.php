@@ -1,9 +1,7 @@
 <?php $this->view("_layouts/header") ?>
 <link rel="stylesheet" href="/assets/plugins/datatables/jquery.dataTables.min.css">
 
-<!-- <div class="app-card shadow-sm mb-5"> -->
-<!-- <div class="app-card-body"> -->
-<section class="content">
+<section class="content" id="content">
     <div class="container-fluid">
         <div class="card card-success card-outline">
             <div class="card-header">
@@ -44,11 +42,6 @@
         </div>
     </div>
 </section>
-<!--//table-responsive-->
-
-<!-- </div> -->
-<!--//app-card-body-->
-<!-- </div> -->
 
 <script src="/assets/plugins/jquery/jquery-3.6.0.slim.min.js"></script>
 <script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>

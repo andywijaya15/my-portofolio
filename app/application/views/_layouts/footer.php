@@ -24,27 +24,17 @@
         noty("success", `Halo user <?= $this->session->userdata("nama_user"); ?>,${res} menyapamu..`)
     });
 
-    const statusNode = document.querySelector("#stat");
-    const statusText = document.querySelector("#stattext");
-
-    const checkTextcolor = (el, status, text) => {
-        if (el.classList.contains("text-danger")) {
-            el.classList.remove("text-danger");
-        } else if (el.classList.contains("text-success")) {
-            el.classList.remove("text-success");
-        }
-        statusNode.textContent = status;
-        statusText.textContent = text;
-    }
+    const tabStatus = document.querySelector("#status");
+    const tabContent = document.querySelector("#content");
 
     socket.on("connect", () => {
-        checkTextcolor(statusNode, "ONLINE", "Kamu bisa menerima data realtime");
-        statusNode.classList.add("text-success");
+        tabStatus.setAttribute("hidden", "hidden");
+        tabContent.removeAttribute("hidden");
     });
 
     socket.on("disconnect", () => {
-        checkTextcolor(statusNode, "OFFINE", "Kamu tidak bisa menerima data realtime,silahkan ganti koneksi internetnya sampai status menjadi ONLINE");
-        statusNode.classList.add("text-danger");
+        tabContent.setAttribute("hidden", "hidden");
+        tabStatus.removeAttribute("hidden");
     });
 </script>
 

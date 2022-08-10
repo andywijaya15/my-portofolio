@@ -1,6 +1,6 @@
 <?php $this->view("_layouts/header") ?>
 
-<div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert">
+<div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" role="alert" id="content">
     <div class="inner">
         <div class="app-card-body p-3 p-lg-4">
             <h3 class="mb-3">Welcome, <?= $this->session->userdata("nama_user"); ?></h3>

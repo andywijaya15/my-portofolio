@@ -1,6 +1,6 @@
 <?php $this->view("_layouts/header") ?>
 
-<div class="row gy-4">
+<div class="row gy-4" id="content">
     <div class="col-12 col-lg-12">
         <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
             <div class="app-card-header p-3 border-bottom-0">
@@ -79,6 +79,7 @@
         <!--//app-card-->
     </div>
 </div>
+
 <script>
     const textEmail = document.querySelector("#textemail");
     const btnEditemail = document.querySelector("#btneditemail");
