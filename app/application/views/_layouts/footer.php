@@ -19,9 +19,9 @@
 
 <script>
     // prod
-    const socket = io("https://socket-ndik.herokuapp.com");
+    // const socket = io("https://socket-ndik.herokuapp.com");
     // dev
-    // socket = io("http://localhost:3000");
+    socket = io("http://localhost:3000");
 
     socket.on("dapetsapa", (res) => {
         noty("success", `Halo user <?= $this->session->userdata("nama_user"); ?>,${res} menyapamu..`)
@@ -30,26 +30,24 @@
     const statusNode = document.querySelector("#stat");
     const statusText = document.querySelector("#stattext");
 
-    const checkTextcolor = (el) => {
+    const checkTextcolor = (el, status, text) => {
         if (el.classList.contains("text-danger")) {
             el.classList.remove("text-danger");
         } else if (el.classList.contains("text-success")) {
             el.classList.remove("text-success");
         }
+        statusNode.textContent = status;
+        statusText.textContent = text;
     }
 
     socket.on("connect", () => {
-        checkTextcolor(statusNode);
+        checkTextcolor(statusNode, "ONLINE", "Kamu bisa menerima data realtime");
         statusNode.classList.add("text-success");
-        statusNode.textContent = "ONLINE";
-        statusText.textContent = "Kamu bisa menerima data realtime"
     });
 
     socket.on("disconnect", () => {
-        checkTextcolor(statusNode);
+        checkTextcolor(statusNode, "OFFINE", "Kamu tidak bisa menerima data realtime,silahkan ganti koneksi internetnya sampai status menjadi ONLINE");
         statusNode.classList.add("text-danger");
-        statusNode.textContent = "OFFINE";
-        statusText.textContent = "Kamu tidak bisa menerima data realtime,silahkan ganti koneksi internetnya sampai status menjadi ONLINE"
     });
 </script>
 
