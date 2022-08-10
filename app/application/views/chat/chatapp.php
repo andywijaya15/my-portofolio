@@ -40,7 +40,7 @@
                 Chat Room
             </h1>
             <div class="card-body">
-                <ul class="list-group" id="msgroom" style="height: 200px;overflow-y: auto;">
+                <ul class="list-group" id="msgroom" style="height: 170px;overflow-y: auto;">
 
                 </ul>
             </div>
