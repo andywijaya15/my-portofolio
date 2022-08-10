@@ -12,8 +12,7 @@ class Realtime extends CI_Controller
 
     public function index()
     {
-        $data['title'] = "Realtime Apps";
-        $this->load->view('realtime/realtime', $data);
+        $this->load->view('realtime/realtime');
     }
 
     public function logclick()

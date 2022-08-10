@@ -4,9 +4,9 @@
     <div class="row">
         <div class="col">
             <div class="card" id="chatroom">
-                <h1 class="card-header">
+                <h4 class="card-header">
                     Chat Room
-                </h1>
+                </h4>
                 <div class="card-body">
                     <ul class="list-group" id="msgroom" style="height: 145px;overflow-y: auto;">
 

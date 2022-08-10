@@ -12,7 +12,6 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data['title'] = "My Account";
-        $this->load->view('user/settings', $data);
+        $this->load->view('user/settings');
     }
 }

@@ -12,7 +12,6 @@ class Email extends CI_Controller
 
     public function index()
     {
-        $data['title'] = "Email";
-        $this->load->view('email/email', $data);
+        $this->load->view('email/email');
     }
 }

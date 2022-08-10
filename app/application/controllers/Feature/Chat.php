@@ -12,7 +12,6 @@ class Chat extends CI_Controller
 
     public function index()
     {
-        $data['title'] = "Chat App";
-        $this->load->view('chat/chatapp', $data);
+        $this->load->view('chat/chatapp');
     }
 }

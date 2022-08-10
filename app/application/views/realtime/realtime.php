@@ -1,9 +1,9 @@
 <?php $this->view("_layouts/header") ?>
 
 <div class="card" id="content" hidden="hidden">
-    <div class="card-header">
+    <h4 class="card-header">
         Realtime data dengan node js
-    </div>
+    </h4>
     <div class="card-body" id="offline">
         <!-- <h5 class="card-title">Realtime data dengan node js</h5> -->
         <p class="card-text fw-bold">Fitur realtime tidak bisa digunakan karna anda tidak terhubung ke node js atau akses ke node js terblok oleh koneksi anda,silahkan gunakan koneksi internet yang lain..</p>
