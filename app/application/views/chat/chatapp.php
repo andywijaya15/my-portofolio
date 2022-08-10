@@ -112,7 +112,9 @@
         });
 
         socket.on("recmsg", (data) => {
-            addChat("rec", data.text, data.username);
+            if (tabChatroom.getAttribute("hidden") != "hidden") {
+                addChat("rec", data.text, data.username);
+            }
         });
 
 
