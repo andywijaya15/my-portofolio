@@ -19,7 +19,7 @@ class Datatable extends CI_Controller
     {
         $data = $this->input->post();
         $data['created_by'] = $this->session->userdata("nama_user");
-        $id = substr($data["nama"], 0, 1);
+        $id = strtoupper(substr($data["nama"], 0, 1));
         $max = sprintf("%04s", (int)$this->db->select("SUBSTRING(id, 3) AS maxid")->from("d_murid")->where("SUBSTRING(id,1,1)", $id)->get()->row("maxid") + 1);
         $data["id"] = "$id-$max";
         if ($this->db->insert("d_murid", $data)) {
