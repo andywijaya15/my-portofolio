@@ -90,6 +90,10 @@
         }]
     });
 
+    socket.on("connect", () => {
+        murid.columns.adjust();
+    });
+
     window.addEventListener("load", () => {
         murid.columns.adjust();
     });

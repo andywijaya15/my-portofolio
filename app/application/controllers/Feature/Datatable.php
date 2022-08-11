@@ -37,7 +37,7 @@ class Datatable extends CI_Controller
         $data = array();
         foreach ($list as $ls) {
             $row = array();
-            $row[] = $ls->id;
+            $row[] = "<div class='text-center'>{$ls->id}</div>";
             $row[] = $ls->nama;
             $row[] = $ls->telp;
             $editUrl = "/Updatemurid/{$ls->id}";
