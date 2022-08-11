@@ -39,7 +39,7 @@ class Datatable extends CI_Controller
             $row = array();
             $row[] = "<div class='text-center'>{$ls->id}</div>";
             $row[] = $ls->nama;
-            $row[] = $ls->telp;
+            $row[] = "<div class='text-center'>{$ls->telp}</div>";
             $editUrl = "/Updatemurid/{$ls->id}";
             $delUrl = "/Removemurid/{$ls->id}";
             $btnEdit = "<button class='btn btn-warning' data-id='{$ls->id}' data-url='{$editUrl}' data-nama='{$ls->nama}' data-telp='{$ls->telp}' onclick='editMurid(event)'>Edit</button>";
