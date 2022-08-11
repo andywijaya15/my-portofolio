@@ -19,6 +19,28 @@
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="/assets/css/portal.css">
 
+    <!-- SweetAlert -->
+    <script src="/assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Socket IO -->
+    <script src="/assets/plugins/socket.io/socket.io.min.js"></script>
+
+    <script>
+        const noty = (status, text) => {
+            Swal.fire({
+                icon: status,
+                title: text,
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+
+        // prod
+        const socket = io("https://socket-ndik.herokuapp.com");
+        // dev
+        // socket = io("http://10.10.1.100:3000");
+    </script>
+
 </head>
 
 <body class="app">

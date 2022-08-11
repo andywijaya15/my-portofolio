@@ -8,21 +8,9 @@
                 <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#daftarmurid" type="button" role="tab">Daftar Murid</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tambahmurid" type="button" role="tab" id="tabtambah">Tambah Murid</button>
+                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tambahmurid" type="button" role="tab">Tambah Murid</button>
             </li>
         </ul>
-        <script>
-            var tabEl = document.querySelectorAll('#btndaftarmurid');
-            console.log(tabEl);
-            tabEl.addEventListener('shown.bs.tab', function(event) {
-                event.target // newly activated tab
-                event.relatedTarget // previous active tab
-            })
-        </script>
-        <!-- <script>
-            const tabTambah = document.querySelector("#tabtambah");
-
-        </script> -->
         <div class="tab-content">
             <div class="tab-pane fade show active" id="daftarmurid" role="tabpanel">
                 <form id="formsearchmurid">
@@ -39,7 +27,7 @@
                 </form>
                 <div class="row mb-1">
                     <div class="table-responsive">
-                        <table id="murid" class="table table-bordered table-striped table-sm" style="cursor: default;">
+                        <table id="murid" class="table table-bordered table-striped table-sm" style="cursor: default">
                             <thead class="table-dark">
                                 <tr>
                                     <th class="text-center">ID</th>
@@ -53,7 +41,7 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="tambahmurid" role="tabpanel">
-                <form id="formtambahmurid">
+                <form action="/Addmurid" id="formtambahmurid" data-tipe="add">
                     <div class="mb-3">
                         <label class="form-label">Nama Murid</label>
                         <input type="text" class="form-control" name="nama" id="nama" autocomplete="off">
@@ -68,8 +56,84 @@
         </div>
     </div>
 </div>
+
+<script src="/assets/plugins/jquery/jquery-3.6.0.min.js"></script>
+<script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script>
-    let murid;
+    const tabList = document.querySelectorAll('button[data-bs-toggle="pill"]');
+    const tabDaftarmurid = tabList[0];
+    const tabTambahmurid = tabList[1];
+    const tableMurid = document.querySelector("#murid");
+    const formTambahmurid = document.querySelector("#formtambahmurid");
+    const inputNama = document.querySelector("#nama");
+    const inputTelp = document.querySelector("#telp");
+    const formSearchmurid = document.querySelector("#formsearchmurid");
+    const inputSearchmurid = document.querySelector("#searchboxdt");
+
+    const murid = new DataTable('#murid', {
+        serverSide: true,
+        responsive: true,
+        pageLength: 50,
+        deferRender: true,
+        scrollY: "265px",
+        dom: 'rtp',
+        ajax: {
+            url: "/Readmurid",
+            type: 'POST'
+        },
+        columnDefs: [{
+            orderable: false,
+            targets: [2, 3]
+        }, {
+            className: 'text-nowrap',
+            targets: [1, 3]
+        }]
+    });
+
+    window.addEventListener("load", () => {
+        murid.columns.adjust();
+    });
+
+    const resetTab = () => {
+        murid.columns.adjust();
+        formTambahmurid.reset();
+        formTambahmurid.action = "/Addmurid";
+        formTambahmurid.setAttribute("data-tipe", "add");
+        tabTambahmurid.textContent = "Tambah Murid";
+    }
+
+    tabDaftarmurid.addEventListener("click", () => {
+        resetTab();
+    });
+
+    formSearchmurid.addEventListener("submit", (e) => {
+        e.preventDefault();
+        murid.search(inputSearchmurid.value).draw();
+    });
+
+    const addupdateMurid = async (url) => {
+        const data = new FormData(formTambahmurid);
+        const response = await fetch(url, {
+            method: "POST",
+            body: data
+        });
+        const result = await response.json();
+        return result.status;
+    }
+
+    formTambahmurid.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const type = e.target.getAttribute("data-tipe");
+        const result = await addupdateMurid(e.target.action);
+        if (result == "pass") {
+            noty("success", type == "add" ? "Berhasil menambahkan murid" : "Berhasil mengupdate murid");
+            murid.ajax.reload();
+            tabDaftarmurid.click();
+        } else {
+            noty("error", type == "add" ? "Gagal menambahkan murid" : "Gagal mengupdate murid");
+        }
+    });
+
     const deleteMurid = async (e) => {
         e.preventDefault();
         const ask = await Swal.fire({
@@ -90,70 +154,26 @@
                 noty("error", "Gagal menghapus murid")
             }
         }
+    }
 
-
+    const editMurid = (e) => {
+        tabTambahmurid.click();
+        tabTambahmurid.textContent = "Edit Murid";
+        formTambahmurid.action = e.target.getAttribute("data-url");
+        formTambahmurid.setAttribute("data-tipe", "update");
+        inputNama.value = e.target.getAttribute("data-nama");
+        inputTelp.value = e.target.getAttribute("data-telp");
     }
 </script>
-<script src="/assets/plugins/jquery/jquery-3.6.0.min.js"></script>
-<script src="/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        murid = new DataTable('#murid', {
-            serverSide: true,
-            responsive: true,
-            pageLength: 50,
-            deferRender: true,
-            scrollY: "265px",
-            dom: 'rtp',
-            ajax: {
-                url: "/Readmurid",
-                type: 'POST'
-            },
-            columnDefs: [{
-                orderable: false,
-                targets: [2, 3]
-            }, {
-                className: 'text-nowrap',
-                targets: [1, 3]
-            }]
-        });
 
-        socket.on("connect", () => {
-            murid.columns.adjust();
-        });
 
-        const formSearchmurid = document.querySelector("#formsearchmurid");
-        const inputSearchmurid = document.querySelector("#searchboxdt");
 
-        formSearchmurid.addEventListener("submit", (e) => {
-            e.preventDefault();
-            murid.search(inputSearchmurid.value).draw();
-        });
 
-        const formTambahmurid = document.querySelector("#formtambahmurid");
-        const inputNama = document.querySelector("#nama");
-        const inputTelp = document.querySelector("#telp");
 
-        const addMurid = async () => {
-            const data = new FormData(formTambahmurid);
-            const response = await fetch("/Addmurid", {
-                method: "POST",
-                body: data
-            });
-            const result = await response.json();
-            return result.status;
 
-        }
 
-        formTambahmurid.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const result = await addMurid();
-            if (result == "pass") {
-                noty("success", "Berhasil menambahkan murid");
-            } else {
-                noty("error", "Gagal menambahkan murid")
-            }
-        });
     });
 </script>
 

@@ -1,5 +1,6 @@
 .DS_Store
-/app/assets
+/app/assets/plugins
+/app/assets/scss
 /app/application/config
 /docker
 /database

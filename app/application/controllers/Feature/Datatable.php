@@ -39,8 +39,10 @@ class Datatable extends CI_Controller
             $row[] = $ls->id;
             $row[] = $ls->nama;
             $row[] = $ls->telp;
-            $btnEdit = "<button class='btn btn-warning' data-id='{$ls->id}' data-nama='{$ls->nama}' data-telp='{$ls->telp}'>Edit</button>";
-            $btnDelete = "<a href='#' class='btn bg-danger' onclick='deleteMurid(event)'>HAPUS</a>";
+            $editUrl = "/Updatemurid/{$ls->id}";
+            $delUrl = "/Removemurid/{$ls->id}";
+            $btnEdit = "<button class='btn btn-warning' data-id='{$ls->id}' data-url='{$editUrl}' data-nama='{$ls->nama}' data-telp='{$ls->telp}' onclick='editMurid(event)'>Edit</button>";
+            $btnDelete = "<a href='{$delUrl}' class='btn bg-danger' onclick='deleteMurid(event)'>HAPUS</a>";
             $row[] =  "<div class='text-center'>{$btnEdit} {$btnDelete}</div>";
             $data[] = $row;
         }
@@ -52,6 +54,18 @@ class Datatable extends CI_Controller
             "data" => $data,
         ];
         echo json_encode($output);
+    }
+
+    public function updatemurid($id)
+    {
+        $data = $this->input->post();
+        $this->db->where("id", $id);
+        if ($this->db->update("d_murid", $data)) {
+            $res["status"] = "pass";
+        } else {
+            $res["status"] = "fail";
+        }
+        echo json_encode($res);
     }
 
     public function removemurid($id)

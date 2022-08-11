@@ -48,38 +48,34 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    const formEmail = document.querySelector("#formemail");
+    const btnKirim = document.querySelector("#btnkirim");
+    const inputMsg = document.querySelector("#msg");
+    const inputEmail = document.querySelector("#email_tujuan");
 
-        const formEmail = document.querySelector("#formemail");
-        const btnKirim = document.querySelector("#btnkirim");
-        const inputMsg = document.querySelector("#msg");
-        const inputEmail = document.querySelector("#email_tujuan");
-
-        const sendMail = async () => {
-            const data = new FormData(formEmail);
-            const response = await fetch("/Sendmail", {
-                method: "POST",
-                body: data
-            });
-            const result = await response.json();
-            return result.status;
-        }
-
-        formEmail.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            if (inputMsg.value == "") {
-                noty("error", "Isi Pesan dulu!");
-                inputMsg.focus();
-            } else {
-                const result = await sendMail();
-                if (result == "pass") {
-                    noty("success", `Berhasil mengirim email,silahkan cek di ${inputEmail.value}`)
-                } else {
-                    noty("error", `Gagal mengirim email`)
-                }
-            }
+    const sendMail = async () => {
+        const data = new FormData(formEmail);
+        const response = await fetch("/Sendmail", {
+            method: "POST",
+            body: data
         });
+        const result = await response.json();
+        return result.status;
+    }
 
+    formEmail.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (inputMsg.value == "") {
+            noty("error", "Isi Pesan dulu!");
+            inputMsg.focus();
+        } else {
+            const result = await sendMail();
+            if (result == "pass") {
+                noty("success", `Berhasil mengirim email,silahkan cek di ${inputEmail.value}`)
+            } else {
+                noty("error", `Gagal mengirim email`)
+            }
+        }
     });
 </script>
 
