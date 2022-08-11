@@ -18,6 +18,7 @@ class Datatable extends CI_Controller
     public function addmurid()
     {
         $data = $this->input->post();
+        $data['created_by'] = $this->session->userdata("nama_user");
         $id = substr($data["nama"], 0, 1);
         $max = sprintf("%04s", (int)$this->db->select("SUBSTRING(id, 3) AS maxid")->from("d_murid")->where("SUBSTRING(id,1,1)", $id)->get()->row("maxid") + 1);
         $data["id"] = "$id-$max";
@@ -59,6 +60,7 @@ class Datatable extends CI_Controller
     public function updatemurid($id)
     {
         $data = $this->input->post();
+        $data['updated_by'] = $this->session->userdata("nama_user");
         $this->db->where("id", $id);
         if ($this->db->update("d_murid", $data)) {
             $res["status"] = "pass";
