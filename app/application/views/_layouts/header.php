@@ -38,7 +38,7 @@
         // prod
         const socket = io("https://socket-ndik.herokuapp.com");
         // dev
-        // socket = io("http://10.10.1.100:3000");
+        // socket = io("http://10.10.1.206:3000");
     </script>
 
 </head>

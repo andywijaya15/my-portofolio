@@ -133,6 +133,11 @@
             noty("success", type == "add" ? "Berhasil menambahkan murid" : "Berhasil mengupdate murid");
             murid.ajax.reload();
             tabDaftarmurid.click();
+            const url = window.location.href;
+            socket.emit("reqreftable", {
+                location: url,
+                table: "murid"
+            });
         } else {
             noty("error", type == "add" ? "Gagal menambahkan murid" : "Gagal mengupdate murid");
         }
@@ -154,6 +159,11 @@
             if (result.status == "pass") {
                 noty("success", "Berhasil menghapus murid");
                 murid.ajax.reload();
+                const url = window.location.href;
+                socket.emit("reqreftable", {
+                    location: url,
+                    table: "murid"
+                });
             } else {
                 noty("error", "Gagal menghapus murid")
             }
@@ -168,17 +178,6 @@
         inputNama.value = e.target.getAttribute("data-nama");
         inputTelp.value = e.target.getAttribute("data-telp");
     }
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-
-
-
-
-
-
-    });
 </script>
 
 <?php $this->view("_layouts/footer") ?>

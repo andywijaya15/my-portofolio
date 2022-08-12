@@ -25,6 +25,16 @@
         tabContent.setAttribute("hidden", "hidden");
         tabStatus.removeAttribute("hidden");
     });
+
+    socket.on("resreftable", (data) => {
+        if (data.location == window.location.href) {
+            switch (data.table) {
+                case "murid":
+                    murid.ajax.reload();
+                    break;
+            }
+        }
+    });
 </script>
 
 <!-- Page Specific JS -->
