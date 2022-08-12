@@ -19,6 +19,9 @@
     <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="/assets/css/portal.css">
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="/assets/plugins/bootstrap-icons/bootstrap-icons.css">
+
     <!-- SweetAlert -->
     <script src="/assets/plugins/sweetalert/sweetalert.min.js"></script>
 

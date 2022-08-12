@@ -36,6 +36,14 @@
         }
     });
 </script>
+<script>
+    const sidebar = document.querySelectorAll("nav>ul>li>a.nav-link");
+    sidebar.forEach(menu => {
+        if (window.location.pathname == menu.pathname) {
+            menu.classList.add("active");
+        }
+    });
+</script>
 
 <!-- Page Specific JS -->
 <script src="/assets/js/app.js"></script>

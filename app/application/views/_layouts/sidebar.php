@@ -5,14 +5,11 @@
          <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
          <div class="app-branding">
              <a class="app-logo" href="<?= base_url(); ?>"><img class="logo-icon me-2" src="/assets/images/icons8-tree-pastel-96.png" alt="logo"><span class="logo-text">Keep It Simple</span></a>
-
          </div>
-         <!--//app-branding-->
 
          <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
              <ul class="app-menu list-unstyled accordion" id="menu-accordion">
                  <li class="nav-item">
-                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                      <a class="nav-link" href="/Dashboard">
                          <span class="nav-icon">
                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -22,11 +19,8 @@
                          </span>
                          <span class="nav-link-text">Dashboard</span>
                      </a>
-                     <!--//nav-link-->
                  </li>
-                 <!--//nav-item-->
                  <li class="nav-item">
-                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                      <a class="nav-link" href="/Datatable">
                          <span class="nav-icon">
                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
@@ -35,11 +29,8 @@
                          </span>
                          <span class="nav-link-text">Datatable</span>
                      </a>
-                     <!--//nav-link-->
                  </li>
-                 <!--//nav-item-->
                  <li class="nav-item">
-                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                      <a class="nav-link" href="/Realtime">
                          <span class="nav-icon">
                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
@@ -49,7 +40,6 @@
                          </span>
                          <span class="nav-link-text">Realtime Data</span>
                      </a>
-                     <!--//nav-link-->
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="/Chat">
@@ -61,9 +51,7 @@
                          <span class="nav-link-text">Chat App</span>
                      </a>
                  </li>
-                 <!--//nav-item-->
                  <li class="nav-item">
-                     <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                      <a class="nav-link" href="/Email">
                          <span class="nav-icon">
                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
@@ -72,18 +60,13 @@
                          </span>
                          <span class="nav-link-text">Notifikasi Email</span>
                      </a>
-                     <!--//nav-link-->
                  </li>
-                 <!--//nav-item-->
              </ul>
-             <!--//app-menu-->
          </nav>
-         <!--//app-nav-->
          <div class="app-sidepanel-footer">
              <nav class="app-nav app-nav-footer">
                  <ul class="app-menu footer-menu list-unstyled">
                      <li class="nav-item">
-                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                          <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
                              <span class="nav-icon">
                                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +80,6 @@
                      </li>
                      <!--//nav-item-->
                      <li class="nav-item">
-                         <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
                          <a class="nav-link" href="https://themes.3rdwavemedia.com/bootstrap-templates/admin-dashboard/portal-free-bootstrap-admin-dashboard-template-for-developers/">
                              <span class="nav-icon">
                                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -113,11 +95,3 @@
          </div>
      </div>
  </div>
- <script>
-     const sidebar = document.querySelectorAll("nav>ul>li>a.nav-link");
-     sidebar.forEach(menu => {
-         if (window.location.pathname == menu.pathname) {
-             menu.classList.add("active");
-         }
-     });
- </script>
