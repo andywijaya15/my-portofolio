@@ -8,6 +8,14 @@ services:
       - 80:80
     links:
       - db
+    deploy:
+      resources:
+          limits:
+            cpus: "0.50"
+            memory: 512M
+          reservations:
+            cpus: "0.25"
+            memory: 128M
   db:
     image: mariadb:latest
     container_name: db
@@ -18,3 +26,11 @@ services:
     restart: always
     volumes:
       - ${PWD}/database:/var/lib/mysql
+    deploy:
+      resources:
+          limits:
+            cpus: "1"
+            memory: 512M
+          reservations:
+            cpus: "0.5"
+            memory: 128M
